@@ -34,7 +34,8 @@ if __name__ == "__main__":
         if ret == True:
             frame = cv.blur(frame_conversion(frame, 3), (2,2))
             gf = try_floodfill(frame, (53,375))
-            if np.sum(frame) < 108956912:
+            print(np.sum(frame))
+            if np.sum(frame) < 109010000:
                 print("open")
             else:
                 print("closed")
