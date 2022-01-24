@@ -3,11 +3,18 @@ import numpy as np
 
 
 def frame_conversion(img, x):
+    """
+    Parameters: img - np.ndarray
+                x - int
+
+    -> just reduces the image by x times
+    """
     return cv.resize(img, (img.shape[1]//x, img.shape[0]//x))
 
 def find_corners_on_img(img):
     """
     Parameters: img - np.ndarray
+
     -> detecting and rendering angles in an image
     """
     gray = np.float32(cv.cvtColor(cv.dilate(img, np.ones((5,5))), cv.COLOR_BGR2GRAY))
@@ -54,16 +61,16 @@ def try_inRange(img):
 
 
 if __name__ == "__main__":
-    corn, dist = [], []
     cap = cv.VideoCapture('smth.mp4')
     while cap.isOpened():
         ret, frame = cap.read()
         if ret == True:
             frame = cv.blur(frame_conversion(frame, 3), (1,1))
-            try_floodfill(frame, (220,340))
+            try_floodfill(frame, (220, 340))
             find_corners_on_img(frame)
             cv.imshow("Door", frame)
-            cv.moveWindow("Door", 710,-300)
+            cv.moveWindow("Door", 710, -300)
+            
         if cv.waitKey(25) & 0xFF == ord('q'):
              break
 
