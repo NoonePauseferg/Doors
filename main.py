@@ -45,7 +45,7 @@ def try_inRange(img):
     """"
     Parameters: img - np.ndarray
 
-    -> unction, which find image sections in exactly diapason of colors,
+    -> function, which find image sections in exactly diapason of colors,
        work badly~
     """
     up = np.array([164,163,158])
